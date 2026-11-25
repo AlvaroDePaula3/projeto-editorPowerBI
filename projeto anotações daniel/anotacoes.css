@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vivo Type', 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f4f5f9;
+    padding: 24px;
+    color: #1f2233;
+}
+
+.topo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.topo h1 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* ---------- Botão ---------- */
+.divisoriaBotaoPowerBI {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.botaoEnviarArquivo {
+    background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    height: 50px;
+    min-width: 210px;
+    padding: 3px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s;
+}
+
+.botaoEnviarArquivo span {
+    background-color: rgb(5, 6, 45);
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    transition: background 300ms;
+}
+
+.botaoEnviarArquivo:hover span {
+    background: none;
+}
+
+.botaoEnviarArquivo:active {
+    transform: scale(0.96);
+}
+
+.status-importacao {
+    font-size: 13px;
+    color: #5b6070;
+}
+
+.status-importacao.erro { color: #c62828; }
+.status-importacao.ok   { color: #2e7d32; }
+
+/* ---------- Tabela ---------- */
+.divisorioTabela {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(20, 24, 60, 0.08);
+    overflow-x: auto;   /* rola na horizontal em telas pequenas */
+}
+
+.tabelaExportada {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 1600px;  /* 19 colunas precisam de espaço */
+}
+
+.tabelaExportada thead th {
+    position: sticky;
+    top: 0;
+    background: #2b2f52;
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 14px;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tabelaExportada thead th.col-edicao {
+    background: #3d2f6b;   /* destaca as colunas editáveis */
+}
+
+.tabelaExportada tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid #eceef4;
+    white-space: nowrap;
+}
+
+.tabelaExportada tbody tr:nth-child(even) {
+    background: #fafbff;
+}
+
+.tabelaExportada tbody tr:hover {
+    background: #eef1ff;
+}
+
+/* ---------- Inputs dentro da célula ---------- */
+.campo-texto {
+    width: 100%;
+    min-width: 130px;
+    padding: 6px 9px;
+    border: 1px solid #d3d7e3;
+    border-radius: 6px;
+    font-size: 13px;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo-texto:focus {
+    outline: none;
+    border-color: #5b42f3;
+    box-shadow: 0 0 0 3px rgba(91, 66, 243, 0.15);
+}
+
+/* ---------- Checkboxes da Área_Responsável ---------- */
+.grupo-checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.grupo-checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.grupo-checkbox input[type="checkbox"] {
+    accent-color: #5b42f3;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}

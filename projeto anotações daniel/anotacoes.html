@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anotações Power BI</title>
+    <link rel="stylesheet" href="anotacoes.css">
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header class="topo">
+        <div class="divisoriaBotaoPowerBI">
+            <label class="botaoEnviarArquivo" for="botaoPowerBI">
+                <span>Carregar arquivo .xlsx</span>
+            </label>
+            <input type="file" id="botaoPowerBI" accept=".xlsx,.csv" hidden>
+            <span id="statusImportacao" class="status-importacao"></span>
+        </div>
+    </header>
+
+    <div class="divisorioTabela">
+        <table class="tabelaExportada">
+            <thead>
+                <tr>
+                    <th>Sequência</th>
+                    <th>SequenciaRaiz</th>
+                    <th>RAIZ</th>
+                    <th>Prioridade</th>
+                    <th>Aging</th>
+                    <th>Categoria</th>
+                    <th>Classificação</th>
+                    <th>Grupo responsável</th>
+                    <th>GRUPO_PLANTA_INTERNA</th>
+                    <th>Localidade</th>
+                    <th>AfetFTTX</th>
+                    <th>Gestor Atual</th>
+                    <th>UF</th>
+                    <th>SiglaLocalidade</th>
+                    <th>Sigla Site</th>
+                    <th class="col-edicao">STATUS</th>
+                    <th class="col-edicao">Previsão</th>
+                    <th class="col-edicao">Área_Responsável</th>
+                    <th>Data de criação</th>
+                </tr>
+            </thead>
+            <tbody id="corpoTabela"></tbody>
+        </table>
+    </div>
+
+    <script src="anotacoes.js"></script>
+</body>
+</html>
