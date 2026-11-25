@@ -1,0 +1,180 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding-bottom: 28px; /* espaço para a barra fixa não cobrir a última linha */
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f7f7fa;
+    color: #222;
+}
+
+/* ---------- topo ---------- */
+.topo {
+    padding: 16px 20px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.divisoriaBotaoPowerBI {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.botaoEnviarArquivo {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.botaoEnviarArquivo:active,
+.botaoEnviarArquivo:hover {
+  outline: 0;
+}
+
+.botaoEnviarArquivo span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.botaoEnviarArquivo:hover span {
+  background: none;
+}
+
+.botaoEnviarArquivo:active {
+  transform: scale(0.9);
+}
+
+
+/* ---------- tabela ---------- */
+.divisorioTabela {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding-bottom: 4px;
+}
+
+.tabelaExportada {
+    width: 100%;
+    min-width: 3400px; /* 38 colunas */
+    border-collapse: collapse;
+    font-size: 12px;
+    background: #fff;
+}
+
+.tabelaExportada thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #3b2a6b;
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    white-space: nowrap;
+    border-right: 1px solid #55418c;
+}
+
+.tabelaExportada thead th.col-edicao {
+    background: #4d3a86;
+}
+
+.tabelaExportada tbody td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e6e6ec;
+    border-right: 1px solid #f0f0f4;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.tabelaExportada tbody tr:nth-child(even) { background: #fafafd; }
+.tabelaExportada tbody tr:hover { background: #f0edfa; }
+
+/* ---------- campos editáveis ---------- */
+.campo-texto {
+    width: 100%;
+    min-width: 130px;
+    padding: 6px 9px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    font-family: inherit;
+    background: #fff;
+}
+
+.campo-texto:focus {
+    outline: none;
+    border-color: #7b5cd6;
+    box-shadow: 0 0 0 3px rgba(123, 92, 214, .18);
+}
+
+.grupo-checkbox {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+}
+
+.grupo-checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.grupo-checkbox input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    accent-color: #4d3a86;
+    cursor: pointer;
+}
+
+/* ---------- barra de rolagem fixa ---------- */
+.barraRolagemFixa {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background: #ececf2;
+    border-top: 1px solid #ccc;
+    z-index: 100;
+}
+
+.barraRolagemFixa-conteudo {
+    height: 1px;
+}
+
+.barraRolagemFixa::-webkit-scrollbar { height: 14px; }
+.barraRolagemFixa::-webkit-scrollbar-track { background: #ececf2; }
+.barraRolagemFixa::-webkit-scrollbar-thumb {
+    background: #9a8fc4;
+    border-radius: 7px;
+}
+.barraRolagemFixa::-webkit-scrollbar-thumb:hover { background: #7b6bb0; }
