@@ -1,42 +1,50 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using ClosedXML.Excel;
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anotações Power BI</title>
+    <link rel="stylesheet" href="anotacoes.css">
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
 
-public static class LeitorExcel
-{
-    public static List<OrdemPowerBI> LerExcel(string caminho)
-    {
-        var lista = new List<OrdemPowerBI>();
-        using var wb = new XLWorkbook(caminho);
-        var ws = wb.Worksheet(1);
-        var cabecalho = ws.Row(1).CellsUsed()
-                          .Select(c => c.GetString().Trim())
-                          .ToList();
+    <header class="topo">
+        <div class="divisoriaBotaoPowerBI">
+            <label class="botaoEnviarArquivo" for="botaoPowerBI">
+                <span>Carregar arquivo</span>
+            </label>
+            <input type="file" id="botaoPowerBI" accept=".xlsx,.xls,.csv" hidden>
 
-        foreach (var linha in ws.RowsUsed().Skip(1))
-        {
-            string Valor(string nomeColuna)
-            {
-                var indice = cabecalho.IndexOf(nomeColuna) + 1;
-                return indice > 0 ? linha.Cell(indice).GetString().Trim() : string.Empty;
-            }
+            <button type="button" class="botao-exportar" id="botaoExportar" disabled>
+                Baixar Excel
+            </button>
 
-            lista.Add(new OrdemPowerBI
-            {
-                Sequencia = Valor("Sequência"),
-                Raiz = Valor("RAIZ"),
-                Prioridade = Valor("Prioridade"),
-                Aging = Valor("Aging"),
-                Localidade = Valor("Localidade"),
-                UF = Valor("UF"),
-                GestorAtual = Valor("Gestor Atual"),
-                DataCriacao = DateTime.TryParse(Valor("Data de criação"),
-                                CultureInfo.GetCultureInfo("pt-BR"),
-                                DateTimeStyles.None,
-                                out var dataCriada) ? dataCriada : null
-            });
-        }
-        return lista;
-    }
-}
+            <span id="statusImportacao" class="status-importacao"></span>
+        </div>
+    </header>
+
+    <div class="divisorioTabela" id="divisorioTabela">
+        <table class="tabelaExportada">
+            <thead id="cabecalhoTabela"></thead>
+            <tbody id="corpoTabela"></tbody>
+        </table>
+    </div>
+
+    <div class="barraRolagemFixa" id="barraRolagemFixa">
+        <div class="barraRolagemFixa-conteudo" id="barraRolagemFixaConteudo"></div>
+    </div>
+
+    <div class="modal-fundo" id="modalAlarme" hidden>
+        <div class="modal-caixa" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+            <header class="modal-topo">
+                <h2 id="modalTitulo">Alarme</h2>
+                <button type="button" class="modal-fechar" id="modalFechar" aria-label="Fechar">×</button>
+            </header>
+            <div class="modal-corpo" id="modalCorpo"></div>
+        </div>
+    </div>
+
+    <script src="anotacoes.js"></script>
+</body>
+</html>
